@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://5q17v8l41r1a"]
+
+[ext_resource type="Texture2D" uid="uid://bg7iykxim6b5t" path="res://icon.svg" id="1_ypi1s"]
+[ext_resource type="Script" path="res://tile_map.gd" id="2_dvmn1"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4jnr2"]
+texture = ExtResource("1_ypi1s")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_1h87h"]
+tile_size = Vector2i(128, 128)
+sources/1 = SubResource("TileSetAtlasSource_4jnr2")
+
+[node name="TileMap" type="TileMap"]
+tile_set = SubResource("TileSet_1h87h")
+cell_quadrant_size = 128
+format = 2
+script = ExtResource("2_dvmn1")
+width = 96
+height = 54
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
